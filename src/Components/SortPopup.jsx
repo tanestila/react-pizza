@@ -1,11 +1,14 @@
 import classNames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
+import { setSortBy } from "../redux/actions/filters";
 
 export default function SortPopup({ items }) {
-  const [visiblePopup, setVisiblePopup] = useState(false);
-  const [activeItem, setActiveItem] = useState(0);
+  const dispatch = useDispatch();
   const sortRef = useRef();
-  const activeLabel = items[activeItem];
+  const [visiblePopup, setVisiblePopup] = useState(false);
+  const activeItem = useSelector(({ filtersReducer }) => filtersReducer.sortBy);
+  const activeLabel = items.filter((i) => activeItem === i.type)[0].name;
 
   const toggleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
@@ -19,7 +22,7 @@ export default function SortPopup({ items }) {
   };
 
   const onSelectItem = (index) => {
-    setActiveItem(index);
+    dispatch(setSortBy(items[index].type));
     setVisiblePopup(false);
   };
 
@@ -56,8 +59,9 @@ export default function SortPopup({ items }) {
               <li
                 className={index === activeItem ? "active" : ""}
                 onClick={() => onSelectItem(index)}
+                key={item.type}
               >
-                {item}
+                {item.name}
               </li>
             ))}
           </ul>

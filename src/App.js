@@ -2,15 +2,17 @@ import { Route, Switch } from "react-router";
 import Header from "./Components/Header";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setPizzas } from "./redux/actions/pizzas";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get("/db.json").then(({ data }) => {
-      setItems(data.pizzas);
+      dispatch(setPizzas(data.pizzas));
     });
   }, []);
 
@@ -23,7 +25,7 @@ function App() {
             <Cart />
           </Route>
           <Route path="/">
-            <Home items={items} />
+            <Home />
           </Route>
         </Switch>
       </div>

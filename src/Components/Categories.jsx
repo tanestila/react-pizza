@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory } from "../redux/actions/filters";
 
-export default function Categories({ categories, onClick }) {
-  const [activeIndex, setActiveIndex] = useState();
-
+export default function Categories({ categories }) {
+  const dispatch = useDispatch();
+  const activeIndex = useSelector(
+    ({ filtersReducer }) => filtersReducer.category
+  );
   const onChangeCategory = (index) => {
-    setActiveIndex(index);
+    dispatch(setCategory(index));
   };
 
   return (
