@@ -1,13 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../redux/actions/filters";
+import React from "react";
+import { useState } from "react";
 
-export default function Categories({ categories }) {
-  const dispatch = useDispatch();
-  const activeIndex = useSelector(
-    ({ filtersReducer }) => filtersReducer.category
-  );
+const Categories = React.memo(({ categories, onClick }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   const onChangeCategory = (index) => {
-    dispatch(setCategory(index));
+    setActiveIndex(index);
+    onClick(index);
   };
 
   return (
@@ -30,4 +29,6 @@ export default function Categories({ categories }) {
       </ul>
     </div>
   );
-}
+}, []);
+
+export default Categories;
