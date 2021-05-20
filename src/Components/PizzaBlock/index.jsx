@@ -30,6 +30,7 @@ export default function Pizza({
         <ul>
           {availableTypes.map((type, index) => (
             <li
+              key={`${type}_${index}`}
               onClick={() => onSelectType(index)}
               className={classNames({
                 active: activeType === index,
@@ -43,6 +44,7 @@ export default function Pizza({
         <ul>
           {availableSize.map((size, index) => (
             <li
+              key={`${size}_${index}`}
               onClick={() => onSelectSize(index)}
               className={classNames({
                 active: activeSize === index,

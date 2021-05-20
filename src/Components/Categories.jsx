@@ -20,6 +20,7 @@ const Categories = React.memo(({ categories, onClick }) => {
         </li>
         {categories.map((item, index) => (
           <li
+            key={`${item}_${index}`}
             className={index === activeIndex ? "active" : ""}
             onClick={() => onChangeCategory(index)}
           >
@@ -29,6 +30,6 @@ const Categories = React.memo(({ categories, onClick }) => {
       </ul>
     </div>
   );
-}, []);
+});
 
 export default Categories;
