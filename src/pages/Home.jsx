@@ -15,7 +15,7 @@ const categoryNames = [
 const sortNames = [
   { name: "популярности", type: "popular" },
   { name: "цене", type: "price" },
-  { name: "алфавиту", type: "alphabet" },
+  { name: "алфавиту", type: "name" },
 ];
 
 export default function Home() {
@@ -26,13 +26,7 @@ export default function Home() {
   );
 
   useEffect(() => {
-    if (!items.length) {
-      dispatch(fetchPizzas());
-    }
-  }, []);
-
-  useEffect(() => {
-    dispatch(fetchPizzas());
+    dispatch(fetchPizzas(category, sortBy));
   }, [sortBy, category]);
 
   const onClickCategory = useCallback((index) => {
@@ -46,8 +40,16 @@ export default function Home() {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories categories={categoryNames} onClick={onClickCategory} />
-        <SortPopup sorts={sortNames} onClick={onClickSort} />
+        <Categories
+          categories={categoryNames}
+          activeCategory={category}
+          onClick={onClickCategory}
+        />
+        <SortPopup
+          sorts={sortNames}
+          activeSortType={sortBy}
+          onClick={onClickSort}
+        />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
