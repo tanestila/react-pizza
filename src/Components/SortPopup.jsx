@@ -22,7 +22,7 @@ const SortPopup = React.memo(function SortPopup({
   };
 
   const onSelectItem = (index) => {
-    onClick(sorts[index].type);
+    onClick(sorts[index]);
     setVisiblePopup(false);
   };
 

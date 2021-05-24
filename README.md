@@ -1,9 +1,14 @@
 # project from the training course Archakov Blog (2021)
 
+Online pizza shop
+design: [Archakov](https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza)
+
 ## Stack
 
 - React (hooks)
 - Redux
+
+## Updated
 
 ## Available Scripts
 

@@ -13,6 +13,7 @@ export default function Button({
         "button--outline": outline,
       })}
       onClick={onClick}
+      {...props}
     >
       {children}
     </button>

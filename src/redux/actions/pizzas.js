@@ -8,7 +8,7 @@ export const fetchPizzas = (category, sortBy) => (dispatch) => {
     .get(
       `http://localhost:3004/pizzas?${
         category !== null ? "category=" + category + "&" : ""
-      }_sort=${sortBy}&_order=desc`
+      }_sort=${sortBy.type}&_order=${sortBy.order}`
       // {
       //   params: {
       //     category: category !== null ? category : "",
