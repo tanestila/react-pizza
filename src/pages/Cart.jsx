@@ -12,17 +12,26 @@ export default function Cart() {
   const dispatch = useDispatch();
   const { items, totalCount, totalSum } = useSelector(({ cart }) => cart);
 
-  const onMinusClick = useCallback((id, index) => {
-    dispatch(decreasePizza(id, index));
-  }, []);
+  const onMinusClick = useCallback(
+    (id, index, pizza) => {
+      dispatch(decreasePizza(id, index, pizza));
+    },
+    [dispatch]
+  );
 
-  const onPlusClick = useCallback((id, index) => {
-    dispatch(increasePizza(id, index));
-  }, []);
+  const onPlusClick = useCallback(
+    (id, index, pizza) => {
+      dispatch(increasePizza(id, index, pizza));
+    },
+    [dispatch]
+  );
 
-  const onDeleteClick = useCallback((id, index) => {
-    dispatch(deletePizza(id, index));
-  }, []);
+  const onDeleteClick = useCallback(
+    (id, index, pizza) => {
+      dispatch(deletePizza(id, index, pizza));
+    },
+    [dispatch]
+  );
 
   return (
     <div className="container container--cart">
@@ -122,9 +131,9 @@ export default function Cart() {
               items[pizzaId].map((pizza, index) => (
                 <CartPizzaBlock
                   {...pizza}
-                  onMinusClick={() => onMinusClick(pizzaId, index)}
-                  onPlusClick={() => onPlusClick(pizzaId, index)}
-                  onDeleteClick={() => onDeleteClick(pizzaId, index)}
+                  onMinusClick={() => onMinusClick(pizzaId, index, pizza)}
+                  onPlusClick={() => onPlusClick(pizzaId, index, pizza)}
+                  onDeleteClick={() => onDeleteClick(pizzaId, index, pizza)}
                 />
               ))
             )}

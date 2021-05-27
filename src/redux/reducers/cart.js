@@ -85,6 +85,8 @@ const cart = (state = initialState, action) => {
             }
           ),
         },
+        totalSum: state.totalSum + action.pizza.price,
+        totalCount: ++state.totalCount,
       };
     case "DECREASE_PIZZA":
       return {
@@ -94,15 +96,18 @@ const cart = (state = initialState, action) => {
           [action.payload.id]: state.items[action.payload.id].map(
             (item, index) => {
               if (index === action.payload.index)
-                return {
-                  ...item,
-                  count: --item.count,
-                  totalPrice: --item.count * item.price,
-                };
-              else return item;
+                if (item.count > 0)
+                  return {
+                    ...item,
+                    count: --item.count,
+                    totalPrice: --item.count * item.price,
+                  };
+                else return item;
             }
           ),
         },
+        totalSum: state.totalSum - action.pizza.price,
+        totalCount: --state.totalCount,
       };
 
     case "DELETE_PIZZA":
