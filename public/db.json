@@ -7,6 +7,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 803,
+      "prices": [803, 905, 103],
       "category": 0,
       "rating": 4
     },
@@ -17,6 +18,7 @@
       "types": [0],
       "sizes": [26, 40],
       "price": 245,
+      "prices": [245, 300, 400],
       "category": 1,
       "rating": 6
     },
@@ -27,6 +29,7 @@
       "types": [0],
       "sizes": [26, 40],
       "price": 295,
+      "prices": [295, 305, 416],
       "category": 1,
       "rating": 4
     },
@@ -37,6 +40,7 @@
       "types": [1],
       "sizes": [26, 30, 40],
       "price": 275,
+      "prices": [275, 311, 500],
       "category": 2,
       "rating": 2
     },
@@ -47,6 +51,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 415,
+      "prices": [415, 550, 605],
       "category": 3,
       "rating": 8
     },
@@ -57,6 +62,7 @@
       "types": [0],
       "sizes": [30, 40],
       "price": 580,
+      "prices": [580, 550, 605],
       "category": 2,
       "rating": 2
     },
@@ -67,6 +73,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 675,
+      "prices": [675, 700, 725],
       "category": 1,
       "rating": 9
     },
@@ -77,6 +84,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 450,
+      "prices": [450, 495, 550],
       "category": 4,
       "rating": 10
     },
@@ -87,6 +95,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 395,
+      "prices": [395, 430, 600],
       "category": 5,
       "rating": 10
     },
@@ -97,6 +106,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 285,
+      "prices": [285, 300, 310],
       "category": 5,
       "rating": 7
     }

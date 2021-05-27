@@ -6,6 +6,7 @@ import {
   deletePizza,
   decreasePizza,
   increasePizza,
+  clearCart,
 } from "../redux/actions/cart";
 
 export default function Cart() {
@@ -32,6 +33,9 @@ export default function Cart() {
     },
     [dispatch]
   );
+  const onClearCartClick = useCallback(() => {
+    dispatch(clearCart());
+  }, [dispatch]);
 
   return (
     <div className="container container--cart">
@@ -123,7 +127,7 @@ export default function Cart() {
                 />
               </svg>
 
-              <span>Очистить корзину</span>
+              <span onClick={onClearCartClick}>Очистить корзину</span>
             </div>
           </div>
           <div className="content__items">

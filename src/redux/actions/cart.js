@@ -20,3 +20,7 @@ export const deletePizza = (id, index, pizza) => ({
   payload: { id, index },
   pizza,
 });
+
+export const clearCart = () => ({
+  type: "CLEAR_CART",
+});
