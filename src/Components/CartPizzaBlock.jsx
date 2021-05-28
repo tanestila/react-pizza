@@ -4,6 +4,7 @@ import { availableSize, availableTypes } from "../config";
 export default function CartPizzaBlock({
   name,
   price,
+  totalPrice,
   imageUrl,
   type,
   size,
@@ -22,6 +23,9 @@ export default function CartPizzaBlock({
         <p>
           {availableTypes[type]} тесто, {availableSize[size]} см.
         </p>
+      </div>
+      <div className="cart__item-price">
+        <b>{price} ₽</b>
       </div>
       <div className="cart__item-count">
         <Button
@@ -71,7 +75,7 @@ export default function CartPizzaBlock({
         </Button>
       </div>
       <div className="cart__item-price">
-        <b>{price} ₽</b>
+        <b>{totalPrice} ₽</b>
       </div>
       <div className="cart__item-remove">
         <Button className="button--circle" onClick={onDeleteClick} outline>

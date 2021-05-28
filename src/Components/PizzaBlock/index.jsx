@@ -8,6 +8,7 @@ export default function Pizza({
   name,
   imageUrl,
   price,
+  prices,
   types = [],
   sizes = [],
   onAdd,
@@ -25,7 +26,15 @@ export default function Pizza({
   };
 
   const handleAddPizza = () => {
-    onAdd({ id, name, imageUrl, price, type: activeType, size: activeSize });
+    onAdd({
+      id,
+      name,
+      imageUrl,
+      price: prices[activeSize],
+      prices,
+      type: activeType,
+      size: activeSize,
+    });
   };
 
   return (

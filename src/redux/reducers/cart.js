@@ -7,17 +7,6 @@ const initialState = {
   totalCount: 0,
 };
 
-const findPizzaId = (pizzaObj, array = []) => {
-  return array.indexOf(
-    array.find(
-      (item) =>
-        item.id === pizzaObj.id &&
-        item.type === pizzaObj.type &&
-        item.size === pizzaObj.size
-    )
-  );
-};
-
 const cart = (state = initialState, action) => {
   return produce(state, (draft) => {
     const calculateTotalSum = (items = {}) => {
@@ -32,18 +21,34 @@ const cart = (state = initialState, action) => {
         .reduce((sum, value) => sum + value.count, 0);
     };
 
+    const findPizzaId = (pizzaObj, array = []) => {
+      return array.indexOf(
+        array.find(
+          (item) =>
+            item.id === pizzaObj.id &&
+            item.type === pizzaObj.type &&
+            item.size === pizzaObj.size
+        )
+      );
+    };
+
+    const returnPizzaPrice = (pizzaObj) => {
+      console.log(pizzaObj.prices[pizzaObj.size]);
+      return pizzaObj.prices[pizzaObj.size];
+    };
+
     if (action.type === "ADD_PIZZA_CART") {
       let index = findPizzaId(action.payload, draft.items[action.payload.id]);
       if (index !== -1) {
         let pizzaObj = draft.items[action.payload.id][index];
         draft.items[action.payload.id][index].count += 1;
         draft.items[action.payload.id][index].totalPrice =
-          pizzaObj.count * pizzaObj.price;
+          pizzaObj.count * returnPizzaPrice(action.payload);
       } else {
         let pizzaObj = {
           ...action.payload,
           count: 1,
-          totalPrice: action.payload.price,
+          totalPrice: returnPizzaPrice(action.payload),
         };
         if (draft.items[action.payload.id])
           draft.items[action.payload.id].push(pizzaObj);
@@ -56,7 +61,7 @@ const cart = (state = initialState, action) => {
       let pizzaObj = draft.items[action.payload.id][action.payload.index];
       draft.items[action.payload.id][action.payload.index].count += 1;
       draft.items[action.payload.id][action.payload.index].totalPrice =
-        pizzaObj.count * pizzaObj.price;
+        pizzaObj.count * returnPizzaPrice(pizzaObj);
       draft.totalSum = calculateTotalSum(draft.items);
       draft.totalCount = calculateTotalCount(draft.items);
     }
@@ -65,7 +70,7 @@ const cart = (state = initialState, action) => {
       if (pizzaObj.count > 0) {
         draft.items[action.payload.id][action.payload.index].count -= 1;
         draft.items[action.payload.id][action.payload.index].totalPrice =
-          pizzaObj.count * pizzaObj.price;
+          pizzaObj.count * returnPizzaPrice(pizzaObj);
       }
       draft.totalSum = calculateTotalSum(draft.items);
       draft.totalCount = calculateTotalCount(draft.items);
