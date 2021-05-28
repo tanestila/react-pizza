@@ -7,8 +7,14 @@ design: [Archakov](https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza
 
 - React (hooks)
 - Redux
+- Immer
+- Axios
+- React-router
 
 ## Updated
+
+- Added price dependencies on size
+- Added grouping pizzas in cart page
 
 ## Available Scripts
 
